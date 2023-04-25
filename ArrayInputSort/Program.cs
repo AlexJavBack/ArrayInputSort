@@ -1,5 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
 
 namespace ArrayInputSort
 {
@@ -11,27 +16,27 @@ namespace ArrayInputSort
         static void Main(string[] args)
         {
             int size = InputArrayStart();
-            while(size <= 0)
+            while (size <= 0)
             {
                 size = InputArrayStart();
             }
-            int [] array = new int[size];
+            int[] array = new int[size];
             Console.WriteLine("Созданный массив");
+            Random random = new Random();
             for (int i = 0; i < array.Length; i++)
-            {
-                Random random = new Random();
-                int number = random.Next(0,50);
+            {                
+                int number = random.Next(0, 50);
                 array[i] = number;
                 Console.WriteLine(array[i]);
-            }            
+            }
             Console.WriteLine();
             InputAction(array);
         }
 
-        private static void InputAction(int [] arr)
+        private static void InputAction(int[] arr)
         {
             Console.WriteLine("Чтобы сотсортировать массив пузырьком нажмите 1, чтобы сотсортировать массив шеллом нажмите 2");
-            input = Console.ReadLine();            
+            input = Console.ReadLine();
             int temp;
             if (double.TryParse(input, out d))
             {
@@ -97,8 +102,9 @@ namespace ArrayInputSort
         {
             Console.WriteLine("Введите длинну массива");
             input = Console.ReadLine();
-            if (double.TryParse(input,out d)){
-                if(d > 0)
+            if (double.TryParse(input, out d))
+            {
+                if (d > 0)
                 {
                     Console.WriteLine();
                     return Convert.ToInt32(input);
@@ -118,16 +124,17 @@ namespace ArrayInputSort
             }
         }
 
-        private static void showArraySorted(int [] arr, long time)
+        private static void showArraySorted(int[] arr, long time)
         {
             Console.WriteLine("Отсортированный массив:");
             Console.WriteLine();
-            for (int i=0; i< arr.Length; i++)
+            for (int i = 0; i < arr.Length; i++)
             {
                 Console.WriteLine(arr[i]);
             }
             Console.WriteLine();
-            switch(choiseSort){
+            switch (choiseSort)
+            {
                 case 1:
                     Console.WriteLine("Время выполнения сортировки \"Пузырьком\" " + time + " сек");
                     break;
